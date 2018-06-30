@@ -42,15 +42,15 @@ def select(b,n):
 		b.configure(image = x)
 		ttt_board[n] = 1
 		checkwin('X')
-	elif(a==9):
-		main_page.destroy()
-		win = tk.Tk()
-		win.after(3000,win.destroy)
-		Label(win,text = " It's a DRAW ",font =("Courier",30)).pack()
 	else : 
 		b.configure(image = o)
 		ttt_board[n] = 0
 		checkwin('O')
+	if(a==9):
+		win = tk.Tk()
+		win.after(3000,win.destroy)
+		Label(win,text = " It's a DRAW ",font =("Courier",30)).pack()
+
 global a
 a = 0 				# a keeps track of which players turn is on....
 
