@@ -26,7 +26,10 @@ player_first = True
 ttt_board = [9 for i in range(9)]
 
 def reset() :
-	global ttt_board
+	global ttt_board,a
+	a = 0
+	ai_enabled = False
+	player_first = True
 	enable_buttons("disabled")
 	ttt_board = [9 for i in range(9)] 
 
@@ -121,6 +124,7 @@ def single_new(player):
 
 
 def double_new():
+	global ai_enabled
 	reset()
 	ai_enabled = False
 	enable_buttons("normal")
