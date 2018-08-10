@@ -3,7 +3,7 @@ from tkinter import *
 import tkinter.messagebox
 from PIL import Image, ImageTk
 import time 
-import alpha_beta_pruning
+import minmax
 
 main_page = tk.Tk()
 main_page.title('Tic Tac Toe')
@@ -43,43 +43,43 @@ def select(b,n):
 		if(a%2==0):
 			b.configure(image = x)
 			ttt_board[n] = 1			# computer's move done.. 
-			if alpha_beta_pruning.check_win(ttt_board) == 1 : 
+			if minmax.check_win(ttt_board) == 1 : 
 				reset()
 				tkinter.messagebox.showinfo("COMPUTER WON"," Better Luck next time.. ")
-			elif alpha_beta_pruning.check_win(ttt_board) == 0 :
+			elif minmax.check_win(ttt_board) == 0 :
 				reset()
 				tkinter.messagebox.showinfo("It's a DRAW"," Well played..  ")
 		else : 
 			b.configure(image = o)
 			ttt_board[n] = 0
-			if alpha_beta_pruning.check_win(ttt_board) == -1 : 
+			if minmax.check_win(ttt_board) == -1 : 
 				reset()
 				tkinter.messagebox.showinfo("PLAYER WON"," CONGRATULATIONS.... ")			
-			elif alpha_beta_pruning.check_win(ttt_board) == 0 :
+			elif minmax.check_win(ttt_board) == 0 :
 				reset()
 				tkinter.messagebox.showinfo("It's a DRAW"," Well played..  ")
-			move = alpha_beta_pruning.best_move(ttt_board)
+			move = minmax.best_move(ttt_board)
 			select(button_dictionary[move],move)  # call for computer to make a move 
 	elif ai_enabled : # player goes second 
 		if (a%2!=0):
 			b.configure(image = x)
 			ttt_board[n] = 1		# computer's move done..
-			if alpha_beta_pruning.check_win(ttt_board) == 1 : 
+			if minmax.check_win(ttt_board) == 1 : 
 				reset()
 				tkinter.messagebox.showinfo("COMPUTER WON"," Better Luck next time.. ")
-			elif alpha_beta_pruning.check_win(ttt_board) == 0 : 
+			elif minmax.check_win(ttt_board) == 0 : 
 				reset()
 				tkinter.messagebox.showinfo("It's a DRAW","Well played .. ")
 		else : 
 			b.configure(image = o)
 			ttt_board[n] = 0
-			if alpha_beta_pruning.check_win(ttt_board) == -1 : 
+			if minmax.check_win(ttt_board) == -1 : 
 				reset()
 				tkinter.messagebox.showinfo("Player WON"," CONGRATULATIONS... ")
-			elif alpha_beta_pruning.check_win(ttt_board) == 0 : 
+			elif minmax.check_win(ttt_board) == 0 : 
 				reset()
 				tkinter.messagebox.showinfo("It's a DRAW","Well played .. ")
-			move = alpha_beta_pruning.best_move(ttt_board)
+			move = minmax.best_move(ttt_board)
 			select(button_dictionary[move],move)  # call for computer to make a move 
 	else : # double player mode
 		if (a%2==0):
@@ -88,7 +88,7 @@ def select(b,n):
 		else :
 			b.configure(image = o)
 			ttt_board[n] = 0
-		res = alpha_beta_pruning.check_win(ttt_board)
+		res = minmax.check_win(ttt_board)
 		if res == 0 : 
 			reset()
 			tkinter.messagebox.showinfo("It's a DRAW","Well played people.. ")
