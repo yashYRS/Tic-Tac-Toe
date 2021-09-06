@@ -45,6 +45,8 @@ There are 2 modes, in which the game can be played, and the same can be selected
 
 Below are the links to our corresponsing projects on Weights and Biases
 
-1. In the midst of the game
-2. Rules
-3. At the time of launch
+#### Launch Window
+[Launch Window](Images/BeforeStart.png)
+
+#### During the Game
+[During the game](Images/DuringGame.png)
