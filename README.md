@@ -6,7 +6,7 @@ Single Player mode uses Alpha-beta pruning for the computer, creating a unbeatab
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/naruarjun/SADAM-reproducibility.git
+   git clone https://github.com/yashYRS/Tic-Tac-Toe.git
    ```
 2. Install virtualenv
    ```sh
@@ -43,10 +43,9 @@ There are 2 modes, in which the game can be played, and the same can be selected
 
 ## Screenshots from the application
 
-Below are the links to our corresponsing projects on Weights and Biases
 
 #### Launch Window
-[Launch Window](Images/BeforeStart.png)
+![Launch Window](Images/BeforeStart.png)
 
 #### During the Game
-[During the game](Images/DuringGame.png)
+![During the game](Images/DuringGame.png)
