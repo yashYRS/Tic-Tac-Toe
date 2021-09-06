@@ -1,4 +1,5 @@
 import time
+import argparse
 from pathlib import Path
 
 import tkinter as tk
@@ -7,7 +8,9 @@ import tkinter.messagebox
 
 from PIL import Image, ImageTk
 
+import utils
 import minmax
+import alpha_beta_pruning as ab_prune
 
 main_page = tk.Tk()
 main_page.title('Tic Tac Toe')
@@ -52,19 +55,19 @@ def select(b, n):
         if(a % 2 == 0):
             b.configure(image=x)
             ttt_board[n] = 1            # computer's move done..
-            if minmax.check_win(ttt_board) == 1:
+            if utils.check_win(ttt_board) == 1:
                 reset()
                 tkinter.messagebox.showinfo("COMPUTER WON", " Better Luck next time.. ")
-            elif minmax.check_win(ttt_board) == 0:
+            elif utils.check_win(ttt_board) == 0:
                 reset()
                 tkinter.messagebox.showinfo("It's a DRAW", " Well played..  ")
         else:
             b.configure(image=o)
             ttt_board[n] = 0
-            if minmax.check_win(ttt_board) == -1:
+            if utils.check_win(ttt_board) == -1:
                 reset()
                 tkinter.messagebox.showinfo("PLAYER WON", " CONGRATULATIONS.... ")
-            elif minmax.check_win(ttt_board) == 0:
+            elif utils.check_win(ttt_board) == 0:
                 reset()
                 tkinter.messagebox.showinfo("It's a DRAW", " Well played..  ")
             move = minmax.best_move(ttt_board)
@@ -74,19 +77,19 @@ def select(b, n):
         if (a % 2 != 0):
             b.configure(image=x)
             ttt_board[n] = 1        # computer's move done..
-            if minmax.check_win(ttt_board) == 1:
+            if utils.check_win(ttt_board) == 1:
                 reset()
                 tkinter.messagebox.showinfo("COMPUTER WON", " Better Luck next time.. ")
-            elif minmax.check_win(ttt_board) == 0:
+            elif utils.check_win(ttt_board) == 0:
                 reset()
                 tkinter.messagebox.showinfo("It's a DRAW", "Well played .. ")
         else:
             b.configure(image=o)
             ttt_board[n] = 0
-            if minmax.check_win(ttt_board) == -1:
+            if utils.check_win(ttt_board) == -1:
                 reset()
                 tkinter.messagebox.showinfo("Player WON", " CONGRATULATIONS... ")
-            elif minmax.check_win(ttt_board) == 0:
+            elif utils.check_win(ttt_board) == 0:
                 reset()
                 tkinter.messagebox.showinfo("It's a DRAW", "Well played .. ")
             move = minmax.best_move(ttt_board)
@@ -99,7 +102,7 @@ def select(b, n):
         else:
             b.configure(image=o)
             ttt_board[n] = 0
-        res = minmax.check_win(ttt_board)
+        res = utils.check_win(ttt_board)
         if res == 0:
             reset()
             tkinter.messagebox.showinfo("It's a DRAW", "Well played people.. ")
