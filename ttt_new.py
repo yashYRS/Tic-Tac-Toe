@@ -9,8 +9,18 @@ import tkinter.messagebox
 from PIL import Image, ImageTk
 
 import utils
-import minmax
-import alpha_beta_pruning as ab_prune
+
+parser = argparse.ArgumentParser(description='Tic Tac toe')
+parser.add_argument("--method", help="Method for running the algorithm",
+                    default="minmax", type=str)
+args = parser.parse_args()
+
+assert args.method in ['minmax', 'abprune'], "Method can be minmax / abprune"
+if args.method == 'minmax':
+    import minmax as method_ai
+else:
+    import alpha_beta_pruning as method_ai
+
 
 main_page = tk.Tk()
 main_page.title('Tic Tac Toe')
@@ -70,7 +80,7 @@ def select(b, n):
             elif utils.check_win(ttt_board) == 0:
                 reset()
                 tkinter.messagebox.showinfo("It's a DRAW", " Well played..  ")
-            move = minmax.best_move(ttt_board)
+            move = method_ai.best_move(ttt_board)
             select(button_dictionary[move], move)  # call for computer to make a move
     elif ai_enabled:
         # player goes second
@@ -92,7 +102,7 @@ def select(b, n):
             elif utils.check_win(ttt_board) == 0:
                 reset()
                 tkinter.messagebox.showinfo("It's a DRAW", "Well played .. ")
-            move = minmax.best_move(ttt_board)
+            move = method_ai.best_move(ttt_board)
             select(button_dictionary[move], move)  # call for computer to make a move
     else:
         # double player mode
